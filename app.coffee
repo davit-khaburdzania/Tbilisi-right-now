@@ -17,8 +17,9 @@ app.configure ->
 
 
 app.configure 'development', ->
-  app.use express.errorHandler() 
+  app.use express.errorHandler()
 
 app.get '/', routes.index
+app.get '/:tag', routes.index
 
 http.createServer(app).listen 3000

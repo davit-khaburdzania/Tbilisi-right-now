@@ -15,10 +15,15 @@ Instagram.getImagesByTag = (tag, callback)->
           data = data.concat last
           callback data
         else
-          callback null
+          callback []
+    error: (errorMessage, errorObject, caller) ->
+      console.log errorMessage
+      callback []
 
 exports.index = (req, res) ->
-  data = Instagram.getImagesByTag 'tbilisi', (data) ->
-   res.render 'index',   title: 'Tbilisi right now', data : data 
+  tag = req.params.tag || 'tbilisi'
+  data = Instagram.getImagesByTag tag, (data) ->
+    tag = tag[0].toUpperCase() + tag.substr 1, tag.length
+    res.render 'index',   title: "#{tag} right now", data : data 
   
       
