@@ -2,4 +2,7 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  #images
+    each item in data
+      a(href="#{item.link}", target="_blank")
+        img(src="#{item.images.low_resolution.url}",title="#{item.caption.text}")
