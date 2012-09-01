@@ -22,4 +22,4 @@ app.configure 'development', ->
 app.get '/', routes.index
 app.get '/:tag', routes.index
 
-http.createServer(app).listen 3000
+http.createServer(app).listen 8080
